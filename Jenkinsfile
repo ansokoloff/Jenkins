@@ -2,16 +2,24 @@ pipeline {
     agent { label "linux" }
     stages {
         stage('Checkout') {
-            steps { }
+            steps { 
+              checkout scm
+            }
         }
         stage('Build') {
-            steps { }
+            steps { 
+              sh 'npm install'
+            }
         }
         stage('Test') {
-            steps { }
+            steps { 
+              echo 'No tests yet'
+            }
         }
         stage('Docker Build') {
-            steps { }
+            steps { 
+            sh 'docker build -t demo-app:$BUILD_NUMBER .'
+            }
         }
     }
 }
